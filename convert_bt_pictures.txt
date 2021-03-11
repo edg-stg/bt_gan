@@ -1,0 +1,5 @@
+mogrify -gravity center -crop 222x222+0-35 *.jpg
+
+mogrify -format png *.jpg
+
+

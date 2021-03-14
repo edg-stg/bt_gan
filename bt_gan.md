@@ -5,8 +5,8 @@ Adaptiert von https://www.kaggle.com/nageshsingh/generate-realistic-human-face-u
 Bildbasis: https://bilddatenbank.bundestag.de/search/picture-result?query=&filterQuery%5Bereignis%5D%5B0%5D=Portr%C3%A4t%2FPortrait&sortVal=3
 
 <table><tr>
-<td> <img src="original_mdb_sample25.png" alt="original" style="width: 450px;"/> </td>
-<td> <img src="res2/generated_399.png" alt="generated" style="width: 350px;"/> </td>
+<td> <img src="img/original_mdb_sample25.png" alt="original" style="width: 350px;"/> </td>
+<td> <img src="img/generated_399.png" alt="generated" style="width: 350px;"/> </td>
 </tr></table>
 
 ## Inhalt:
@@ -815,19 +815,19 @@ plt.show()
 Zum Ende eine Sichtung der Ergebnisse. Die ersten Versuche der Fälscherin/des generator-NN haben wenig Ähnlichkeit mit den originalen Bildern, zeigen aber grundsätzliche Eigenschaften eines Porträts: Schulterpartie, Hintergrund, Farbe der Haut, grundsätzliche Position von Haaren, Mund und Augen.
 
 <table><tr>
-<td> <img src="res2/generated_0.png" alt="50 Iterationen" style="width: 250px;"/> </td>
-<td> <img src="res2/generated_1.png" alt="100 Iterationen" style="width: 250px;"/> </td>
-<td> <img src="res2/generated_4.png" alt="250 Iterationen" style="width: 250px;"/> </td>
-<td> <img src="res2/generated_9.png" alt="500 Iterationen" style="width: 250px;"/> </td>
+<td> <img src="img/generated_0.png" alt="50 Iterationen" style="width: 250px;"/> </td>
+<td> <img src="img/generated_1.png" alt="100 Iterationen" style="width: 250px;"/> </td>
+<td> <img src="img/generated_4.png" alt="250 Iterationen" style="width: 250px;"/> </td>
+<td> <img src="img/generated_9.png" alt="500 Iterationen" style="width: 250px;"/> </td>
 </tr></table>
 
 Nach jeweils 5.000, 10.000, 15.000 Iterationen und zum Ende bei etwa 20.000 Iterationen stimmt die grundsätzliche Struktur der generierten Bilder ziemlich gut. Nach 10.000 Iterationen verbessern sich die Bilder kaum noch:
 
 <table><tr>
-<td> <img src="res2/generated_99.png" alt="5.000 Iterationen" style="width: 250px;"/> </td>
-<td> <img src="res2/generated_199.png" alt="10.000 Iterationen" style="width: 250px;"/> </td>
-<td> <img src="res2/generated_299.png" alt="15.000 Iterationen" style="width: 250px;"/> </td>
-<td> <img src="res2/generated_399.png" alt="20.000 Iterationen" style="width: 250px;"/> </td>
+<td> <img src="img/generated_99.png" alt="5.000 Iterationen" style="width: 250px;"/> </td>
+<td> <img src="img/generated_199.png" alt="10.000 Iterationen" style="width: 250px;"/> </td>
+<td> <img src="img/generated_299.png" alt="15.000 Iterationen" style="width: 250px;"/> </td>
+<td> <img src="img/generated_399.png" alt="20.000 Iterationen" style="width: 250px;"/> </td>
 </tr></table>
 
 Es wird aber auch deutlich, dass die Bilder weit entfernt sind von echt-wirkenden "Deep Fakes": Zum Teil stimmt die Anzahl von Augen/Mündern nicht, schwarz-weiß-Bilder und Farbfotos werden nicht unterschieden vom GAN, Brillen stellen ein Problem dar usw.

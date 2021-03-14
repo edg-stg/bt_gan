@@ -853,3 +853,10 @@ for filename in files:
 imageio.mimsave('training.gif', images_to_gif)
 # shutil.rmtree(RES_DIR)
 ```
+
+
+```python
+# run "jupyter nbconvert --to markdown bt_gan.ipynb" in terminal
+# this makes md file of notebook
+# rename to README.md and add-commit-push
+```

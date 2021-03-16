@@ -5,7 +5,7 @@ Adaptiert von https://www.kaggle.com/nageshsingh/generate-realistic-human-face-u
 Bildbasis: https://bilddatenbank.bundestag.de/search/picture-result?query=&filterQuery%5Bereignis%5D%5B0%5D=Portr%C3%A4t%2FPortrait&sortVal=3
 
 <table><tr>
-<td> <img src="img/original_mdb_sample25.png" alt="original" style="width: 450px;"/> </td>
+<td> <img src="img/original_mdb_sample25.png" alt="original" style="width: 350px;"/> </td>
 <td> <img src="img/generated_399.png" alt="generated" style="width: 350px;"/> </td>
 </tr></table>
 
@@ -95,16 +95,6 @@ np.random.shuffle(images)
 
 
 ```python
-# helper function for cropping after rotation
-def crop_center(img,newdimx,newdimy):
-    n,y,x,c = img.shape
-    startx = x//2-((newdimx)//2)
-    starty = y//2-((newdimy)//2)    
-    return img[:,starty:starty+newdimy,startx:startx+newdimx,:]
-```
-
-
-```python
 #Display random 25 images
 fig = plt.figure(1, figsize=(10, 10))
 for i in range(25):
@@ -118,7 +108,7 @@ fig.savefig('original_mdb_sample25.png', bbox_inches='tight')
 
 
     
-![png](bt_gan_files/bt_gan_13_0.png)
+![png](bt_gan_files/bt_gan_12_0.png)
     
 
 
@@ -340,6 +330,8 @@ gan.summary()
 
 
 Nun folgt das Training des NN (dauert ein Weilchen...). Je nach Power der Grafikkarte(n) können hier größere Batchsizes eingesetzt werden. Ein Batch ist die Anzahl der Bilder, die die Grafikkarte gleichzeitig durch das NN schieben kann, um die Parameter des NN upzudaten (insgesamt knapp 15 Mio. trainierbare Parameter!). Alle 50 Iterationen wird ein Bild gespeichert, dass die aktuellen Fälschungen des generator-NN repräsentiert.
+
+Als zusätzliche Hilfe erlauben wir dem GAN, auch auf rechts-links-gespiegelten Kopien des Datensatzes zu trainieren, was die Größe des Datensatzes effektiv verdoppelt.
 
 
 ```python
@@ -832,7 +824,7 @@ plt.show()
 
 
     
-![png](bt_gan_files/bt_gan_28_0.png)
+![png](bt_gan_files/bt_gan_27_0.png)
     
 
 
@@ -857,9 +849,9 @@ Nach jeweils 5.000, 10.000, 15.000 Iterationen und zum Ende bei etwa 20.000 Iter
 <td> <img src="img/generated_399.png" alt="20.000 Iterationen" style="width: 250px;"/> </td>
 </tr></table>
 
-Es wird aber auch deutlich, dass die Bilder weit entfernt sind von echt-wirkenden "Deep Fakes": Zum Teil stimmt die Anzahl von Augen/Mündern nicht, schwarz-weiß-Bilder und Farbfotos werden nicht unterschieden vom GAN, Brillen stellen ein Problem dar usw.
+Es wird aber auch deutlich, dass die Bilder weit entfernt sind von echt-wirkenden "Deep Fakes": Zum Teil stimmt die Anzahl/Position von Augen/Mündern nicht, schwarz-weiß-Bilder und Farbfotos werden nicht korrekt unterschieden vom GAN, Brillen und Langhaarfrisuren stellen ein Problem dar usw.
 
-Mögliche Ansätze, um diese Probleme zu lösen, sind: alle Bilder nur schwarz-weiß berücksichtigen, größeren Datensatz verwenden oder den Datensatz künstlich erweitern (z.B. durch Spiegeln der Aufnahmen).
+Das Hauptproblem ist hier der doch geringe Umfang des Datensatzes von weniger als 2000 Bildern (etwas mehr als 3000 durch Spiegelung der Porträts). Typische GANs bzw. andere NNs werden auf mindestens zehntausenden Bildern trainiert.
 
 Ein weiterer wichtiger Aspekt, der schon jetzt deutlich wird: die "besten" generierten Bilder repräsentieren diese, die im ursprünglichen Datensatz am häufigsten vorhanden sind. Mit anderen Worten, *weiße*, meist männliche Menschen mit Kurzhaarschnitten. Brillen, Langhaarfrisuren und nicht-*weiße* Hautfarben stellen das NN vor Schwierigkeiten auf Grund der Zusammensetzung des Datensatzes.
 
